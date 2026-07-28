@@ -1,0 +1,9 @@
+# Dossier d'origine des photos (non nécessaire en ligne)
+Saved Pictures/
+
+# Fichiers système Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
