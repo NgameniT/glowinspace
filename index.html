@@ -980,16 +980,16 @@
 
         <!-- Vidéo 1 -->
         <div class="cils-video-wrap">
-            <video autoplay muted loop playsinline>
-                <source src="assets/cils-video-1.mp4" type="video/mp4">
+            <video class="lazy-video" muted loop playsinline preload="none" poster="assets/cils-video-1-poster.jpg">
+                <source data-src="assets/cils-video-1.mp4" type="video/mp4">
             </video>
             <div class="cils-video-badge">✦ Avant / Après ✦</div>
         </div>
 
         <!-- Vidéo 2 -->
         <div class="cils-video-wrap">
-            <video autoplay muted loop playsinline>
-                <source src="assets/video-2.mp4" type="video/mp4">
+            <video class="lazy-video" muted loop playsinline preload="none" poster="assets/video-2-poster.jpg">
+                <source data-src="assets/video-2.mp4" type="video/mp4">
             </video>
             <div class="cils-video-badge">✦ La pose ✦</div>
         </div>
@@ -1452,6 +1452,27 @@
             document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
         }
     });
+
+    // Vidéos différées : chargées et lancées seulement à l'approche du scroll
+    const lazyVideos = document.querySelectorAll('.lazy-video');
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                if (!video.src && !video.currentSrc) {
+                    const source = video.querySelector('source[data-src]');
+                    if (source) {
+                        source.src = source.dataset.src;
+                        video.load();
+                    }
+                }
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, { rootMargin: '200px' });
+    lazyVideos.forEach(video => videoObserver.observe(video));
 
     // Formulaire → WhatsApp
     document.getElementById('rdvForm').addEventListener('submit', function(e) {
