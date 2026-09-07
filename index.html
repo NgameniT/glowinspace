@@ -566,7 +566,12 @@
 
         /* ===== PRODUITS ===== */
         #produits { background:var(--dark); }
-        .produits-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3rem; }
+        .produits-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+        .produit-img-btn {
+            display:block; width:100%; border:none; background:none;
+            padding:0; margin:0; cursor:pointer; font:inherit;
+        }
+        .produit-img-btn:focus-visible { outline:2px solid var(--gold); outline-offset:-2px; }
         .produit-card { position:relative; overflow:hidden; cursor:pointer; }
         .produit-card img {
             width:100%; height:380px; object-fit:cover; display:block;
@@ -599,9 +604,10 @@
         .galerie-grid {
             display:grid;
             grid-template-columns:repeat(4,1fr);
-            grid-template-rows:260px 260px;
+            grid-auto-rows:260px;
             gap:3px; margin-top:4rem;
         }
+        .galerie-item.wide { grid-column:1 / -1; }
         .galerie-item { overflow:hidden; position:relative; }
         .galerie-item:first-child { grid-column:span 2; grid-row:span 2; }
         .galerie-item img {
@@ -824,6 +830,20 @@
             line-height: 1.9; margin-bottom: .6rem;
         }
         .modal-box p strong { color: var(--cream); font-weight: 400; }
+        .modal-produit-img {
+            width:100%; max-height:340px; object-fit:contain;
+            background:rgba(255,255,255,.03); margin-bottom:1.5rem;
+        }
+        .modal-produit-price {
+            color:var(--gold); font-size:1.1rem; font-weight:700;
+            margin-bottom:1.5rem;
+        }
+        .modal-produit-cta {
+            display:inline-flex; align-items:center; gap:.6rem;
+            background:var(--wa); color:white; padding:.9rem 1.6rem;
+            font-size:.72rem; letter-spacing:.15em; text-transform:uppercase;
+            text-decoration:none; font-weight:700; margin-top:.5rem;
+        }
 
         @media(max-width:900px){
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -906,8 +926,9 @@
             .produit-card img { height:280px; }
 
             /* Galerie */
-            .galerie-grid { grid-template-columns:1fr 1fr; grid-template-rows:200px 200px 200px; }
+            .galerie-grid { grid-template-columns:1fr 1fr; grid-template-rows:200px 200px 200px; grid-auto-rows:200px; }
             .galerie-item:first-child { grid-column:span 2; grid-row:span 1; }
+            .galerie-item.wide { grid-column:1 / -1; }
 
             /* Contact */
             .contact-info { gap:2rem; flex-wrap:wrap; justify-content:center; }
@@ -936,6 +957,7 @@
             .galerie-grid {
                 grid-template-columns:1fr 1fr;
                 grid-template-rows:160px 160px 160px;
+                grid-auto-rows:160px;
             }
 
             /* Tarif rows */
@@ -1384,7 +1406,9 @@
         <div class="produits-grid">
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="0">
-                <img src="assets/produit-1.jpg" alt="Black Saop" width="900" height="1126" loading="lazy">
+                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-1')" aria-label="Voir les détails — Black Saop">
+                    <img src="assets/produit-1.jpg" alt="Black Saop" width="900" height="1126" loading="lazy">
+                </button>
                 <div class="produit-info">
                     <p class="produit-name">Black Saop</p>
                     <p class="produit-desc">Savon noir — nettoie en profondeur & régénère</p>
@@ -1398,7 +1422,9 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="80">
-                <img src="assets/produit-2.jpg" alt="Huile Hydratante" width="900" height="1126" loading="lazy">
+                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-2')" aria-label="Voir les détails — Huile Hydratante">
+                    <img src="assets/produit-2.jpg" alt="Huile Hydratante" width="900" height="1126" loading="lazy">
+                </button>
                 <div class="produit-info">
                     <p class="produit-name">Huile Hydratante</p>
                     <p class="produit-desc">Nourrit & illumine la peau en profondeur</p>
@@ -1412,7 +1438,9 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="160">
-                <img src="assets/produit-3.jpg" alt="Crème Visage" width="900" height="1260" loading="lazy">
+                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-3')" aria-label="Voir les détails — Crème Visage">
+                    <img src="assets/produit-3.jpg" alt="Crème Visage" width="900" height="1260" loading="lazy">
+                </button>
                 <div class="produit-info">
                     <p class="produit-name">Crème Visage</p>
                     <p class="produit-desc">Unifie le teint & prépare la peau</p>
@@ -1426,12 +1454,46 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="240">
-                <img src="assets/produit-4.jpg" alt="Gommage Black Saop" width="900" height="1126" loading="lazy">
+                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-4')" aria-label="Voir les détails — Gommage Black Saop">
+                    <img src="assets/produit-4.jpg" alt="Gommage Black Saop" width="900" height="1126" loading="lazy">
+                </button>
                 <div class="produit-info">
                     <p class="produit-name">Gommage Black Saop</p>
                     <p class="produit-desc">Exfolie & sublime — pour tous types de peau</p>
                     <p class="produit-price">7 000 XOF</p>
                     <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20le%20Gommage%20Black%20Saop."
+                       class="btn-wa-card" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Commander
+                    </a>
+                </div>
+            </div>
+
+            <div class="produit-card" data-aos="fade-up" data-aos-delay="320">
+                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-5')" aria-label="Voir les détails — Lotion Tonique">
+                    <img src="assets/produit-detail-5.jpg" alt="Lotion Tonique" width="900" height="1126" loading="lazy">
+                </button>
+                <div class="produit-info">
+                    <p class="produit-name">Lotion Tonique</p>
+                    <p class="produit-desc">Purifiante au zinc & thé vert — tonifie et clarifie la peau</p>
+                    <p class="produit-price">2 500 XOF</p>
+                    <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20la%20Lotion%20Tonique."
+                       class="btn-wa-card" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Commander
+                    </a>
+                </div>
+            </div>
+
+            <div class="produit-card" data-aos="fade-up" data-aos-delay="400">
+                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-6')" aria-label="Voir les détails — Savon Riz au Lait & Collagène Gluta">
+                    <img src="assets/produit-detail-6.jpg" alt="Savon Riz au Lait & Collagène Gluta" width="900" height="1126" loading="lazy">
+                </button>
+                <div class="produit-info">
+                    <p class="produit-name">Riz au Lait & Collagène</p>
+                    <p class="produit-desc">Élimine boutons & taches — enrichi en vitamine B</p>
+                    <p class="produit-price">2 000 XOF</p>
+                    <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20le%20Savon%20Riz%20au%20Lait%20%26%20Collag%C3%A8ne."
                        class="btn-wa-card" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         Commander
@@ -1458,6 +1520,7 @@
         <div class="galerie-item"><img src="assets/galerie-3.jpg" alt="Nail art animal print" width="1400" height="1866" loading="lazy"><div class="galerie-veil"></div></div>
         <div class="galerie-item"><img src="assets/galerie-4.jpg" alt="Ongles bordeaux" width="1400" height="2488" loading="lazy"><div class="galerie-veil"></div></div>
         <div class="galerie-item"><img src="assets/cils-3.jpg" alt="Résultat cils Glowin Space" style="object-position:center 30%;" width="607" height="1080" loading="lazy"><div class="galerie-veil"></div></div>
+        <div class="galerie-item wide"><img src="assets/galerie-6.jpg" alt="Devanture Glowin Space, Cotonou" style="object-position:center 12%;" width="1400" height="2488" loading="lazy"><div class="galerie-veil"></div></div>
     </div>
 </section>
 
@@ -1684,6 +1747,101 @@
 
         <h3>Litiges</h3>
         <p>En cas de litige, une solution amiable sera recherchée en priorité. Vous pouvez nous contacter au <strong>+229 98 64 25 93</strong>.</p>
+    </div>
+</div>
+
+<!-- MODALS PRODUITS -->
+<div class="modal-overlay" id="modal-produit-1">
+    <div class="modal-box">
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-produit-1')">✕</button>
+        <img src="assets/produit-detail-1.jpg" alt="Black Saop" class="modal-produit-img" loading="lazy">
+        <h2>Black Saop</h2>
+        <p class="modal-produit-price">10 000 – 15 000 XOF (selon carnation)</p>
+        <p>Hydrate la peau en profondeur, prévient les rides, répare et régénère. Nourrit la peau en vitamines A et E.</p>
+        <p>Savon adapté à tous types de peau — ne dépigmente pas.</p>
+        <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20le%20Black%20Saop."
+           class="modal-produit-cta" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Commander via WhatsApp
+        </a>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-produit-2">
+    <div class="modal-box">
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-produit-2')">✕</button>
+        <img src="assets/produit-detail-2.jpg" alt="Huile Hydratante" class="modal-produit-img" loading="lazy">
+        <h2>Huile Hydratante</h2>
+        <p class="modal-produit-price">3 000 XOF</p>
+        <p>Hydrate le corps, répare et donne un éclat naturel. Adaptée à tout type de peau et de teint, elle pénètre la peau en profondeur.</p>
+        <p>Huile essentielle 100% naturelle. <em style="color:var(--gold);font-style:normal;">NB : ne colle pas la main.</em></p>
+        <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20l%27Huile%20Hydratante."
+           class="modal-produit-cta" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Commander via WhatsApp
+        </a>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-produit-3">
+    <div class="modal-box">
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-produit-3')">✕</button>
+        <img src="assets/produit-detail-3.jpg" alt="Crème Visage" class="modal-produit-img" loading="lazy">
+        <h2>Crème Visage</h2>
+        <p class="modal-produit-price">5 000 XOF</p>
+        <p>Unifie le teint et prépare la peau. Une crème de visage pensée pour un usage quotidien.</p>
+        <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20la%20Cr%C3%A8me%20Visage."
+           class="modal-produit-cta" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Commander via WhatsApp
+        </a>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-produit-4">
+    <div class="modal-box">
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-produit-4')">✕</button>
+        <img src="assets/produit-4.jpg" alt="Gommage Black Saop" class="modal-produit-img" loading="lazy">
+        <h2>Gommage Black Saop</h2>
+        <p class="modal-produit-price">7 000 XOF</p>
+        <p>Exfolie et sublime la peau — convient à tous types de peau.</p>
+        <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20le%20Gommage%20Black%20Saop."
+           class="modal-produit-cta" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Commander via WhatsApp
+        </a>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-produit-5">
+    <div class="modal-box">
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-produit-5')">✕</button>
+        <img src="assets/produit-detail-5.jpg" alt="Lotion Tonique" class="modal-produit-img" loading="lazy">
+        <h2>Lotion Tonique</h2>
+        <p class="modal-produit-price">2 500 XOF</p>
+        <p>Soin de visage purifiant, au zinc et extrait de thé vert — tonifie et clarifie la peau.</p>
+        <p>Sans alcool. Recommandée pour les peaux mixtes à grasses.</p>
+        <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20la%20Lotion%20Tonique."
+           class="modal-produit-cta" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Commander via WhatsApp
+        </a>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-produit-6">
+    <div class="modal-box">
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-produit-6')">✕</button>
+        <img src="assets/produit-detail-6.jpg" alt="Savon Riz au Lait & Collagène Gluta" class="modal-produit-img" loading="lazy">
+        <h2>Riz au Lait & Collagène Gluta</h2>
+        <p class="modal-produit-price">2 000 XOF</p>
+        <p>Élimine les boutons et les taches de pigmentation. Enrichit la peau en vitamine B.</p>
+        <p>Savon adapté à tous types de peaux, aux extraits de plantes.</p>
+        <a href="https://wa.me/22998642593?text=Bonjour%20Glowin%20Space%20!%20Je%20veux%20commander%20le%20Savon%20Riz%20au%20Lait%20%26%20Collag%C3%A8ne."
+           class="modal-produit-cta" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Commander via WhatsApp
+        </a>
     </div>
 </div>
 
