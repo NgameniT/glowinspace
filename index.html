@@ -6,6 +6,100 @@
     <title>Glowin Space — Beauty Studio | Cotonou, Bénin</title>
     <meta name="description" content="Glowin Space — Extensions de cils, pose d'ongles et produits de soin haut de gamme à Cotonou, Bénin. Éclat naturel, brillez en toute confiance.">
 
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+    <link rel="canonical" href="https://glowinspace.netlify.app/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Glowin Space">
+    <meta property="og:title" content="Glowin Space — Beauty Studio | Cotonou, Bénin">
+    <meta property="og:description" content="Extensions de cils, pose d'ongles et produits de soin haut de gamme à Cotonou, Bénin. Éclat naturel, brillez en toute confiance.">
+    <meta property="og:url" content="https://glowinspace.netlify.app/">
+    <meta property="og:image" content="https://glowinspace.netlify.app/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Glowin Space — Beauty Studio | Cotonou, Bénin">
+    <meta name="twitter:description" content="Extensions de cils, pose d'ongles et produits de soin haut de gamme à Cotonou, Bénin. Éclat naturel, brillez en toute confiance.">
+    <meta name="twitter:image" content="https://glowinspace.netlify.app/assets/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BeautySalon",
+        "name": "Glowin Space",
+        "image": "https://glowinspace.netlify.app/assets/og-image.jpg",
+        "url": "https://glowinspace.netlify.app/",
+        "telephone": ["+22998642593", "+22901515179"],
+        "priceRange": "2500-18000 XOF",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3e rue après le pont de Fifadji, Sainte Rita",
+            "addressLocality": "Cotonou",
+            "addressCountry": "BJ"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            "opens": "09:00",
+            "closes": "19:00"
+        },
+        "sameAs": [
+            "https://www.instagram.com/glowin.space",
+            "https://www.tiktok.com/@glowin.space"
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Combien de temps dure une pose d'extensions de cils ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Comptez entre 3 et 4 semaines avant un remplissage, selon votre cycle naturel de pousse des cils et l'entretien apporté au quotidien." }
+            },
+            {
+                "@type": "Question",
+                "name": "Faut-il prendre rendez-vous à l'avance ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Oui, toutes nos prestations (cils, ongles, pédicure) sont réalisées uniquement sur rendez-vous, à confirmer via WhatsApp ou le formulaire de réservation." }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment annuler ou modifier mon rendez-vous ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Contactez-nous directement sur WhatsApp au minimum 24 heures à l'avance. Toute annulation tardive ou absence non signalée peut entraîner des frais." }
+            },
+            {
+                "@type": "Question",
+                "name": "Les tarifs affichés sont-ils garantis ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Les tarifs sont indiqués en Francs CFA (XOF) et peuvent évoluer. Le tarif appliqué est celui en vigueur au moment de votre réservation, confirmé avec vous via WhatsApp." }
+            },
+            {
+                "@type": "Question",
+                "name": "Livrez-vous les produits de soin ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Oui, la livraison est disponible à Cotonou. Passez votre commande directement via WhatsApp depuis la section Produits." }
+            },
+            {
+                "@type": "Question",
+                "name": "Quels moyens de paiement acceptez-vous ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Le paiement s'effectue directement au studio à l'issue de la prestation. Pour toute précision sur les moyens de paiement disponibles, contactez-nous via WhatsApp." }
+            }
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="image" href="assets/hero.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -25,6 +119,25 @@
         }
 
         html { scroll-behavior: smooth; }
+
+        .skip-link {
+            position: absolute; top: -50px; left: 0; z-index: 3000;
+            background: var(--gold); color: var(--black);
+            padding: .9rem 1.6rem; font-size: .75rem; font-weight: 700;
+            letter-spacing: .1em; text-transform: uppercase;
+            text-decoration: none; transition: top .25s;
+        }
+        .skip-link:focus { top: 0; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+            html { scroll-behavior: auto; }
+        }
 
         body {
             background: var(--black);
@@ -378,6 +491,24 @@
         .tarif-name { font-size:.82rem; color:var(--gray); }
         .tarif-price { font-size:.82rem; color:var(--cream); font-weight:700; white-space:nowrap; margin-left:1rem; }
 
+        /* ===== FAQ ===== */
+        #faq { background:var(--black); }
+        .faq-list { max-width:800px; margin:3rem auto 0; }
+        .faq-item { border-bottom:1px solid rgba(201,168,76,.15); }
+        .faq-item summary {
+            cursor:pointer; padding:1.5rem 0;
+            font-family:'Playfair Display',serif; font-size:1.05rem;
+            color:var(--cream); list-style:none;
+            display:flex; justify-content:space-between; align-items:center; gap:1.5rem;
+        }
+        .faq-item summary::-webkit-details-marker { display:none; }
+        .faq-item summary::after {
+            content:'+'; color:var(--gold); font-size:1.5rem; font-weight:300;
+            transition:transform .3s; flex-shrink:0; line-height:1;
+        }
+        .faq-item[open] summary::after { transform:rotate(45deg); }
+        .faq-item p { color:var(--gray); font-size:.88rem; line-height:1.9; padding:0 2rem 1.6rem 0; }
+
         /* ===== RÉSERVATION ===== */
         #reservation {
             background: url('assets/about.jpg') center/cover no-repeat;
@@ -408,7 +539,7 @@
         }
         .rdv-form input:focus,
         .rdv-form select:focus,
-        .rdv-form textarea:focus { border-color:var(--gold); }
+        .rdv-form textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,168,76,.25); }
         .rdv-form select option { background:var(--dark); }
         .rdv-form textarea { resize:vertical; min-height:90px; }
         .btn-rdv {
@@ -798,6 +929,8 @@
 <body>
 
 <!-- NAV -->
+<a href="#hero" class="skip-link">Aller au contenu principal</a>
+
 <nav id="navbar">
     <a href="#hero" class="nav-logo">Glowin Space</a>
     <ul class="nav-links">
@@ -807,22 +940,24 @@
         <li><a href="#tarifs">Tarifs</a></li>
         <li><a href="#produits">Produits</a></li>
         <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#reservation" class="nav-cta">Réserver</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
     </button>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" id="menuClose">✕</button>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+    <button class="mobile-close" id="menuClose" aria-label="Fermer le menu">✕</button>
     <a href="#about"       onclick="closeMenu()">À propos</a>
     <a href="#services"    onclick="closeMenu()">Services</a>
     <a href="#cils"        onclick="closeMenu()">Cils</a>
     <a href="#tarifs"      onclick="closeMenu()">Tarifs</a>
     <a href="#produits"    onclick="closeMenu()">Produits</a>
     <a href="#galerie"     onclick="closeMenu()">Galerie</a>
+    <a href="#faq"         onclick="closeMenu()">FAQ</a>
     <a href="#contact"     onclick="closeMenu()">Contact</a>
     <a href="#reservation" onclick="closeMenu()" style="color:var(--gold);font-size:1rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Lato',sans-serif;">Réserver →</a>
 </div>
@@ -877,7 +1012,7 @@
                 </div>
             </div>
             <div class="about-img-wrap" data-aos="fade-left">
-                <img src="assets/about.jpg" alt="Glowin Space — Cotonou Bénin">
+                <img src="assets/about.jpg" alt="Glowin Space — Cotonou Bénin" width="1920" height="2400" loading="lazy">
             </div>
         </div>
     </div>
@@ -974,23 +1109,23 @@
 
         <!-- Vidéo 1 -->
         <div class="cils-video-wrap">
-            <video autoplay muted loop playsinline>
-                <source src="assets/cils-video-1.mp4" type="video/mp4">
+            <video class="lazy-video" muted loop playsinline preload="none" poster="assets/cils-video-1-poster.jpg">
+                <source data-src="assets/cils-video-1.mp4" type="video/mp4">
             </video>
             <div class="cils-video-badge">✦ Avant / Après ✦</div>
         </div>
 
         <!-- Vidéo 2 -->
         <div class="cils-video-wrap">
-            <video autoplay muted loop playsinline>
-                <source src="assets/video-2.mp4" type="video/mp4">
+            <video class="lazy-video" muted loop playsinline preload="none" poster="assets/video-2-poster.jpg">
+                <source data-src="assets/video-2.mp4" type="video/mp4">
             </video>
             <div class="cils-video-badge">✦ La pose ✦</div>
         </div>
 
         <!-- Photo côté droit — cils-2 (différente du hero) -->
         <div class="cils-photo2">
-            <img src="assets/cils-2.jpg" alt="Résultat extensions de cils — Glowin Space">
+            <img src="assets/cils-2.jpg" alt="Résultat extensions de cils — Glowin Space" width="607" height="1080" loading="lazy">
             <div class="cils-photo2-overlay">
                 <blockquote>
                     "Un regard qui parle avant même que vous
@@ -1046,6 +1181,43 @@
                 <div class="tarif-row"><span class="tarif-name">Nettoyage + Neutre H/F</span><span class="tarif-price">2 500 XOF</span></div>
             </div>
 
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-label">✦ Vos questions</span>
+            <h2 class="section-title">Questions Fréquentes</h2>
+            <div class="gold-line center"></div>
+        </div>
+        <div class="faq-list" data-aos="fade-up">
+            <details class="faq-item">
+                <summary>Combien de temps dure une pose d'extensions de cils ?</summary>
+                <p>Comptez entre 3 et 4 semaines avant un remplissage, selon votre cycle naturel de pousse des cils et l'entretien apporté au quotidien.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Faut-il prendre rendez-vous à l'avance ?</summary>
+                <p>Oui, toutes nos prestations (cils, ongles, pédicure) sont réalisées uniquement sur rendez-vous, à confirmer via WhatsApp ou le formulaire de réservation.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Comment annuler ou modifier mon rendez-vous ?</summary>
+                <p>Contactez-nous directement sur WhatsApp au minimum 24 heures à l'avance. Toute annulation tardive ou absence non signalée peut entraîner des frais.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Les tarifs affichés sont-ils garantis ?</summary>
+                <p>Les tarifs sont indiqués en Francs CFA (XOF) et peuvent évoluer. Le tarif appliqué est celui en vigueur au moment de votre réservation, confirmé avec vous via WhatsApp.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Livrez-vous les produits de soin ?</summary>
+                <p>Oui, la livraison est disponible à Cotonou. Passez votre commande directement via WhatsApp depuis la section Produits.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Quels moyens de paiement acceptez-vous ?</summary>
+                <p>Le paiement s'effectue directement au studio à l'issue de la prestation. Pour toute précision sur les moyens de paiement disponibles, contactez-nous via WhatsApp.</p>
+            </details>
         </div>
     </div>
 </section>
@@ -1124,7 +1296,7 @@
         <div class="produits-grid">
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="0">
-                <img src="assets/produit-1.jpg" alt="Black Saop">
+                <img src="assets/produit-1.jpg" alt="Black Saop" width="900" height="1126" loading="lazy">
                 <div class="produit-info">
                     <p class="produit-name">Black Saop</p>
                     <p class="produit-desc">Savon noir — nettoie en profondeur & régénère</p>
@@ -1137,7 +1309,7 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="80">
-                <img src="assets/produit-2.jpg" alt="Huile Hydratante">
+                <img src="assets/produit-2.jpg" alt="Huile Hydratante" width="900" height="1126" loading="lazy">
                 <div class="produit-info">
                     <p class="produit-name">Huile Hydratante</p>
                     <p class="produit-desc">Nourrit & illumine la peau en profondeur</p>
@@ -1150,7 +1322,7 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="160">
-                <img src="assets/produit-3.jpg" alt="Lotion Tonique">
+                <img src="assets/produit-3.jpg" alt="Lotion Tonique" width="900" height="1260" loading="lazy">
                 <div class="produit-info">
                     <p class="produit-name">Lotion Tonique</p>
                     <p class="produit-desc">Unifie le teint & prépare la peau</p>
@@ -1163,7 +1335,7 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="240">
-                <img src="assets/produit-4.jpg" alt="Gommage Black Saop">
+                <img src="assets/produit-4.jpg" alt="Gommage Black Saop" width="900" height="1126" loading="lazy">
                 <div class="produit-info">
                     <p class="produit-name">Gommage Black Saop</p>
                     <p class="produit-desc">Exfolie & sublime — pour tous types de peau</p>
@@ -1189,11 +1361,11 @@
         </div>
     </div>
     <div class="galerie-grid">
-        <div class="galerie-item"><img src="assets/galerie-1.jpg" alt="Shooting Glowin Space"><div class="galerie-veil"></div></div>
-        <div class="galerie-item"><img src="assets/galerie-2.jpg" alt="Nail art french dots"><div class="galerie-veil"></div></div>
-        <div class="galerie-item"><img src="assets/galerie-3.jpg" alt="Nail art animal print"><div class="galerie-veil"></div></div>
-        <div class="galerie-item"><img src="assets/galerie-4.jpg" alt="Ongles bordeaux"><div class="galerie-veil"></div></div>
-        <div class="galerie-item"><img src="assets/cils-3.jpg" alt="Résultat cils Glowin Space" style="object-position:center 30%;"><div class="galerie-veil"></div></div>
+        <div class="galerie-item"><img src="assets/galerie-1.jpg" alt="Shooting Glowin Space" width="1400" height="1750" loading="lazy"><div class="galerie-veil"></div></div>
+        <div class="galerie-item"><img src="assets/galerie-2.jpg" alt="Nail art french dots" width="1400" height="2488" loading="lazy"><div class="galerie-veil"></div></div>
+        <div class="galerie-item"><img src="assets/galerie-3.jpg" alt="Nail art animal print" width="1400" height="1866" loading="lazy"><div class="galerie-veil"></div></div>
+        <div class="galerie-item"><img src="assets/galerie-4.jpg" alt="Ongles bordeaux" width="1400" height="2488" loading="lazy"><div class="galerie-veil"></div></div>
+        <div class="galerie-item"><img src="assets/cils-3.jpg" alt="Résultat cils Glowin Space" style="object-position:center 30%;" width="607" height="1080" loading="lazy"><div class="galerie-veil"></div></div>
     </div>
 </section>
 
@@ -1291,6 +1463,7 @@
                 <li><a href="#tarifs">Tarifs</a></li>
                 <li><a href="#produits">Produits</a></li>
                 <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#reservation">Réserver</a></li>
             </ul>
         </div>
@@ -1339,7 +1512,7 @@
 <!-- MODAL : Mentions légales -->
 <div class="modal-overlay" id="modal-mentions">
     <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('modal-mentions')">✕</button>
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-mentions')">✕</button>
         <h2>Mentions légales</h2>
 
         <h3>Éditeur du site</h3>
@@ -1362,7 +1535,7 @@
 <!-- MODAL : Politique de confidentialité -->
 <div class="modal-overlay" id="modal-confidentialite">
     <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('modal-confidentialite')">✕</button>
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-confidentialite')">✕</button>
         <h2>Politique de confidentialité</h2>
 
         <h3>Données collectées</h3>
@@ -1382,7 +1555,7 @@
 <!-- MODAL : CGV -->
 <div class="modal-overlay" id="modal-cgv">
     <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('modal-cgv')">✕</button>
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-cgv')">✕</button>
         <h2>Conditions Générales de Vente</h2>
 
         <h3>Prestations de services</h3>
@@ -1410,7 +1583,7 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration:850, once:true, offset:70 });
+    if (typeof AOS !== 'undefined') AOS.init({ duration:850, once:true, offset:70 });
 
     // Navbar scroll
     const navbar = document.getElementById('navbar');
@@ -1418,27 +1591,69 @@
         navbar.classList.toggle('scrolled', window.scrollY > 60);
     });
 
+    // Piège à focus clavier (menu mobile + modals)
+    function trapFocus(container, e) {
+        const focusables = container.querySelectorAll('a[href], button:not([disabled]), input, select, textarea');
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault(); first.focus();
+        }
+    }
+
     // Mobile menu
-    document.getElementById('hamburger').addEventListener('click', () =>
-        document.getElementById('mobileMenu').classList.add('open'));
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuLastFocused = null;
+
+    function openMenu() {
+        menuLastFocused = document.activeElement;
+        mobileMenu.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        const firstLink = mobileMenu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    }
+    function closeMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        if (menuLastFocused) menuLastFocused.focus();
+    }
+    hamburger.addEventListener('click', openMenu);
     document.getElementById('menuClose').addEventListener('click', closeMenu);
-    document.getElementById('mobileMenu').addEventListener('click', e => {
-        if (e.target === document.getElementById('mobileMenu')) closeMenu();
+    mobileMenu.addEventListener('click', e => {
+        if (e.target === mobileMenu) closeMenu();
     });
-    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+    mobileMenu.addEventListener('keydown', e => {
+        if (!mobileMenu.classList.contains('open')) return;
+        if (e.key === 'Escape') closeMenu();
+        if (e.key === 'Tab') trapFocus(mobileMenu, e);
+    });
 
     // Modals légaux
+    let modalLastFocused = null;
     function openModal(id) {
-        document.getElementById(id).classList.add('open');
+        modalLastFocused = document.activeElement;
+        const modal = document.getElementById(id);
+        modal.classList.add('open');
         document.body.style.overflow = 'hidden';
+        const closeBtn = modal.querySelector('.modal-close');
+        if (closeBtn) closeBtn.focus();
     }
     function closeModal(id) {
         document.getElementById(id).classList.remove('open');
         document.body.style.overflow = '';
+        if (modalLastFocused) modalLastFocused.focus();
     }
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', e => {
             if (e.target === overlay) closeModal(overlay.id);
+        });
+        overlay.addEventListener('keydown', e => {
+            if (!overlay.classList.contains('open')) return;
+            if (e.key === 'Tab') trapFocus(overlay.querySelector('.modal-box'), e);
         });
     });
     document.addEventListener('keydown', e => {
@@ -1446,6 +1661,33 @@
             document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
         }
     });
+
+    // Vidéos différées : chargées et lancées seulement à l'approche du scroll
+    const lazyVideos = document.querySelectorAll('.lazy-video');
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                if (!video.src && !video.currentSrc) {
+                    const source = video.querySelector('source[data-src]');
+                    if (source) {
+                        source.src = source.dataset.src;
+                        video.load();
+                    }
+                }
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, { rootMargin: '200px' });
+    lazyVideos.forEach(video => videoObserver.observe(video));
+
+    // Empêcher la sélection d'une date/heure passée dans le formulaire de RDV
+    const rdvDateInput = document.getElementById('rdv-date');
+    const pad = n => String(n).padStart(2, '0');
+    const now = new Date();
+    rdvDateInput.min = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
     // Formulaire → WhatsApp
     document.getElementById('rdvForm').addEventListener('submit', function(e) {
@@ -1456,6 +1698,13 @@
         const msg     = document.getElementById('rdv-msg').value.trim();
 
         if (!nom || !service) return;
+
+        rdvDateInput.setCustomValidity('');
+        if (dateVal && new Date(dateVal) < new Date()) {
+            rdvDateInput.setCustomValidity('Merci de choisir une date et une heure futures.');
+            rdvDateInput.reportValidity();
+            return;
+        }
 
         let dateStr = '';
         if (dateVal) {
