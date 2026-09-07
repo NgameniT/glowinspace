@@ -173,10 +173,10 @@
             border-bottom: 1px solid rgba(201,168,76,.2);
         }
         .nav-logo {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.1rem; color: var(--gold);
+            display: flex; align-items: center;
             text-decoration: none;
         }
+        .nav-logo img { height: 50px; width: 50px; display: block; }
         .nav-links { list-style:none; display:flex; gap:2.5rem; }
         .nav-links a {
             color: var(--cream); text-decoration:none;
@@ -617,8 +617,8 @@
         /* ===== CONTACT ===== */
         #contact { background:var(--dark); text-align:center; }
         .contact-logo {
-            display:block; font-family:'Great Vibes',cursive;
-            font-size:clamp(3.5rem,8vw,6rem); color:var(--gold); margin-bottom:.5rem;
+            display:block; margin:0 auto .5rem;
+            width:clamp(120px,18vw,170px); height:clamp(120px,18vw,170px);
         }
         .contact-tagline {
             font-family:'Playfair Display',serif; font-size:.82rem;
@@ -733,11 +733,10 @@
             gap: 3rem;
         }
         .footer-logo {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem; color: var(--gold);
-            display: block; margin-bottom: .8rem;
+            display: inline-block; margin-bottom: .8rem;
             text-decoration: none;
         }
+        .footer-logo img { height: 76px; width: 76px; display: block; }
         .footer-brand p {
             color: var(--gray); font-size: .82rem;
             line-height: 1.9; max-width: 260px;
@@ -970,7 +969,7 @@
 <a href="#hero" class="skip-link">Aller au contenu principal</a>
 
 <nav id="navbar">
-    <a href="#hero" class="nav-logo">Glowin Space</a>
+    <a href="#hero" class="nav-logo"><img src="assets/logo.png" alt="Glowin Space" width="50" height="50"></a>
     <ul class="nav-links">
         <li><a href="#about">À propos</a></li>
         <li><a href="#services">Services</a></li>
@@ -1435,7 +1434,7 @@
 <!-- CONTACT -->
 <section id="contact">
     <div class="container">
-        <span class="contact-logo" data-aos="fade-up">Glowin Space</span>
+        <img src="assets/logo.png" alt="Glowin Space" class="contact-logo" data-aos="fade-up" loading="lazy">
         <p class="contact-tagline" data-aos="fade-up">Éclat naturel, brillez en toute confiance</p>
         <p class="contact-text" data-aos="fade-up">
             Prête à rayonner ? Contactez-nous sur WhatsApp ou retrouvez-nous
@@ -1520,7 +1519,7 @@
 
         <!-- Marque -->
         <div class="footer-brand">
-            <a href="#hero" class="footer-logo">Glowin Space</a>
+            <a href="#hero" class="footer-logo"><img src="assets/logo.png" alt="Glowin Space" width="76" height="76" loading="lazy"></a>
             <p>Votre espace beauté de confiance à Cotonou. Extensions de cils, pose d'ongles et soins haut de gamme pour sublimer votre beauté naturelle.</p>
             <div class="footer-socials">
                 <a href="https://www.instagram.com/glowin.space" target="_blank" rel="noopener" class="footer-social-btn" title="Instagram">
