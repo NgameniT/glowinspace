@@ -392,7 +392,8 @@
             line-height: 2; font-size: .92rem; margin-bottom: 2rem;
         }
         .cils-desc em { color: var(--gold); font-style: normal; }
-        .cils-types { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 2.5rem; }
+        .cils-types { display: grid; grid-template-columns: 1fr; gap: .7rem; margin-bottom: 2.5rem; }
+        @media(min-width:560px){ .cils-types { grid-template-columns: 1fr 1fr; } }
         .cils-type {
             display: flex; align-items: flex-start; gap: 1rem;
             padding: .85rem 1.2rem;
@@ -1115,8 +1116,15 @@
                 <div class="cils-type">
                     <div class="cils-type-dot"></div>
                     <div>
-                        <span class="cils-type-name">Cils Naturels</span>
+                        <span class="cils-type-name">Naturels / Classic</span>
                         <span class="cils-type-desc">Effet discret — idéal pour le quotidien</span>
+                    </div>
+                </div>
+                <div class="cils-type">
+                    <div class="cils-type-dot"></div>
+                    <div>
+                        <span class="cils-type-name">Hybrides</span>
+                        <span class="cils-type-desc">Mélange classique et volume, texture douce</span>
                     </div>
                 </div>
                 <div class="cils-type">
@@ -1130,7 +1138,21 @@
                     <div class="cils-type-dot"></div>
                     <div>
                         <span class="cils-type-name">Mégavolume</span>
-                        <span class="cils-type-desc">Effet wow dramatique</span>
+                        <span class="cils-type-desc">Effet wow dramatique, volume maximal</span>
+                    </div>
+                </div>
+                <div class="cils-type">
+                    <div class="cils-type-dot"></div>
+                    <div>
+                        <span class="cils-type-name">Effet Wispy</span>
+                        <span class="cils-type-desc">Pointes effilées façon plume, look texturé</span>
+                    </div>
+                </div>
+                <div class="cils-type">
+                    <div class="cils-type-dot"></div>
+                    <div>
+                        <span class="cils-type-name">Baby Bottom</span>
+                        <span class="cils-type-desc">Cils courts au centre, regard ouvert et pétillant</span>
                     </div>
                 </div>
             </div>
@@ -1288,9 +1310,12 @@
                     <select id="rdv-service" required>
                         <option value="" disabled selected>Choisir un service</option>
                         <optgroup label="Cils (sur devis)">
-                            <option>Extensions de cils — naturel</option>
+                            <option>Extensions de cils — naturel / classic</option>
+                            <option>Extensions de cils — hybrides</option>
                             <option>Extensions de cils — volume russe</option>
                             <option>Extensions de cils — mégavolume</option>
+                            <option>Extensions de cils — effet wispy</option>
+                            <option>Extensions de cils — baby bottom</option>
                         </optgroup>
                         <optgroup label="Vernis Semi-Permanent">
                             <option data-price="3500">Vernis gel S/M — 3 500 XOF</option>
