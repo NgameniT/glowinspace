@@ -1778,7 +1778,7 @@
     // false en production. La clé privée ne doit JAMAIS être mise ici :
     // elle va uniquement dans les variables d'environnement Netlify, lue
     // par netlify/functions/verify-payment.js.
-    const KKIAPAY_CONFIG = { publicKey: null, sandbox: true };
+    const KKIAPAY_CONFIG = { publicKey: 'c73c8cc0aab611f1a3b945093dc135d9', sandbox: true };
 
     const serviceSelect    = document.getElementById('rdv-service');
     const rdvDeposit       = document.getElementById('rdvDeposit');
@@ -1814,6 +1814,11 @@
 
         if (!KKIAPAY_CONFIG.publicKey) {
             rdvDepositStatus.textContent = "Paiement en ligne bientôt disponible — vous pouvez réserver sans acompte pour l'instant.";
+            return;
+        }
+
+        if (typeof openKkiapayWidget !== 'function') {
+            rdvDepositStatus.textContent = "Le module de paiement n'a pas pu se charger — vérifiez votre connexion et réessayez, ou réservez sans acompte.";
             return;
         }
 
