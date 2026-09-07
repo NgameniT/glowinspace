@@ -1416,7 +1416,7 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration:850, once:true, offset:70 });
+    if (typeof AOS !== 'undefined') AOS.init({ duration:850, once:true, offset:70 });
 
     // Navbar scroll
     const navbar = document.getElementById('navbar');
