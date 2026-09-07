@@ -81,6 +81,25 @@
 
         html { scroll-behavior: smooth; }
 
+        .skip-link {
+            position: absolute; top: -50px; left: 0; z-index: 3000;
+            background: var(--gold); color: var(--black);
+            padding: .9rem 1.6rem; font-size: .75rem; font-weight: 700;
+            letter-spacing: .1em; text-transform: uppercase;
+            text-decoration: none; transition: top .25s;
+        }
+        .skip-link:focus { top: 0; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
         body {
             background: var(--black);
             color: var(--cream);
@@ -463,7 +482,7 @@
         }
         .rdv-form input:focus,
         .rdv-form select:focus,
-        .rdv-form textarea:focus { border-color:var(--gold); }
+        .rdv-form textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,168,76,.25); }
         .rdv-form select option { background:var(--dark); }
         .rdv-form textarea { resize:vertical; min-height:90px; }
         .btn-rdv {
@@ -853,6 +872,8 @@
 <body>
 
 <!-- NAV -->
+<a href="#hero" class="skip-link">Aller au contenu principal</a>
+
 <nav id="navbar">
     <a href="#hero" class="nav-logo">Glowin Space</a>
     <ul class="nav-links">
@@ -865,13 +886,13 @@
         <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#reservation" class="nav-cta">Réserver</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
     </button>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" id="menuClose">✕</button>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+    <button class="mobile-close" id="menuClose" aria-label="Fermer le menu">✕</button>
     <a href="#about"       onclick="closeMenu()">À propos</a>
     <a href="#services"    onclick="closeMenu()">Services</a>
     <a href="#cils"        onclick="closeMenu()">Cils</a>
@@ -1394,7 +1415,7 @@
 <!-- MODAL : Mentions légales -->
 <div class="modal-overlay" id="modal-mentions">
     <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('modal-mentions')">✕</button>
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-mentions')">✕</button>
         <h2>Mentions légales</h2>
 
         <h3>Éditeur du site</h3>
@@ -1417,7 +1438,7 @@
 <!-- MODAL : Politique de confidentialité -->
 <div class="modal-overlay" id="modal-confidentialite">
     <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('modal-confidentialite')">✕</button>
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-confidentialite')">✕</button>
         <h2>Politique de confidentialité</h2>
 
         <h3>Données collectées</h3>
@@ -1437,7 +1458,7 @@
 <!-- MODAL : CGV -->
 <div class="modal-overlay" id="modal-cgv">
     <div class="modal-box">
-        <button class="modal-close" onclick="closeModal('modal-cgv')">✕</button>
+        <button class="modal-close" aria-label="Fermer" onclick="closeModal('modal-cgv')">✕</button>
         <h2>Conditions Générales de Vente</h2>
 
         <h3>Prestations de services</h3>
@@ -1473,27 +1494,69 @@
         navbar.classList.toggle('scrolled', window.scrollY > 60);
     });
 
+    // Piège à focus clavier (menu mobile + modals)
+    function trapFocus(container, e) {
+        const focusables = container.querySelectorAll('a[href], button:not([disabled]), input, select, textarea');
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault(); first.focus();
+        }
+    }
+
     // Mobile menu
-    document.getElementById('hamburger').addEventListener('click', () =>
-        document.getElementById('mobileMenu').classList.add('open'));
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuLastFocused = null;
+
+    function openMenu() {
+        menuLastFocused = document.activeElement;
+        mobileMenu.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        const firstLink = mobileMenu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    }
+    function closeMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        if (menuLastFocused) menuLastFocused.focus();
+    }
+    hamburger.addEventListener('click', openMenu);
     document.getElementById('menuClose').addEventListener('click', closeMenu);
-    document.getElementById('mobileMenu').addEventListener('click', e => {
-        if (e.target === document.getElementById('mobileMenu')) closeMenu();
+    mobileMenu.addEventListener('click', e => {
+        if (e.target === mobileMenu) closeMenu();
     });
-    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+    mobileMenu.addEventListener('keydown', e => {
+        if (!mobileMenu.classList.contains('open')) return;
+        if (e.key === 'Escape') closeMenu();
+        if (e.key === 'Tab') trapFocus(mobileMenu, e);
+    });
 
     // Modals légaux
+    let modalLastFocused = null;
     function openModal(id) {
-        document.getElementById(id).classList.add('open');
+        modalLastFocused = document.activeElement;
+        const modal = document.getElementById(id);
+        modal.classList.add('open');
         document.body.style.overflow = 'hidden';
+        const closeBtn = modal.querySelector('.modal-close');
+        if (closeBtn) closeBtn.focus();
     }
     function closeModal(id) {
         document.getElementById(id).classList.remove('open');
         document.body.style.overflow = '';
+        if (modalLastFocused) modalLastFocused.focus();
     }
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', e => {
             if (e.target === overlay) closeModal(overlay.id);
+        });
+        overlay.addEventListener('keydown', e => {
+            if (!overlay.classList.contains('open')) return;
+            if (e.key === 'Tab') trapFocus(overlay.querySelector('.modal-box'), e);
         });
     });
     document.addEventListener('keydown', e => {
