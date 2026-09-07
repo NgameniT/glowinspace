@@ -1683,6 +1683,12 @@
     }, { rootMargin: '200px' });
     lazyVideos.forEach(video => videoObserver.observe(video));
 
+    // Empêcher la sélection d'une date/heure passée dans le formulaire de RDV
+    const rdvDateInput = document.getElementById('rdv-date');
+    const pad = n => String(n).padStart(2, '0');
+    const now = new Date();
+    rdvDateInput.min = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
     // Formulaire → WhatsApp
     document.getElementById('rdvForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -1692,6 +1698,13 @@
         const msg     = document.getElementById('rdv-msg').value.trim();
 
         if (!nom || !service) return;
+
+        rdvDateInput.setCustomValidity('');
+        if (dateVal && new Date(dateVal) < new Date()) {
+            rdvDateInput.setCustomValidity('Merci de choisir une date et une heure futures.');
+            rdvDateInput.reportValidity();
+            return;
+        }
 
         let dateStr = '';
         if (dateVal) {
