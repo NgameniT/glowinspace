@@ -173,10 +173,10 @@
             border-bottom: 1px solid rgba(201,168,76,.2);
         }
         .nav-logo {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.1rem; color: var(--gold);
+            display: flex; align-items: center;
             text-decoration: none;
         }
+        .nav-logo img { height: 50px; width: 50px; display: block; }
         .nav-links { list-style:none; display:flex; gap:2.5rem; }
         .nav-links a {
             color: var(--cream); text-decoration:none;
@@ -548,6 +548,13 @@
         .rdv-form textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,168,76,.25); }
         .rdv-form select option { background:var(--dark); }
         .rdv-form textarea { resize:vertical; min-height:90px; }
+        .rdv-deposit {
+            border:1px solid rgba(201,168,76,.25); background:rgba(201,168,76,.05);
+            padding:1.2rem 1.4rem; display:flex; flex-direction:column; gap:.8rem;
+        }
+        .rdv-deposit-text { font-size:.82rem; color:var(--cream); line-height:1.7; }
+        .rdv-deposit-text strong { color:var(--gold); }
+        .rdv-deposit-status { font-size:.78rem; color:var(--gold); min-height:1.1em; }
         .btn-rdv {
             background:var(--gold); color:var(--black);
             border:none; padding:1rem; font-family:'Lato',sans-serif;
@@ -610,8 +617,8 @@
         /* ===== CONTACT ===== */
         #contact { background:var(--dark); text-align:center; }
         .contact-logo {
-            display:block; font-family:'Great Vibes',cursive;
-            font-size:clamp(3.5rem,8vw,6rem); color:var(--gold); margin-bottom:.5rem;
+            display:block; margin:0 auto .5rem;
+            width:clamp(120px,18vw,170px); height:clamp(120px,18vw,170px);
         }
         .contact-tagline {
             font-family:'Playfair Display',serif; font-size:.82rem;
@@ -726,11 +733,10 @@
             gap: 3rem;
         }
         .footer-logo {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem; color: var(--gold);
-            display: block; margin-bottom: .8rem;
+            display: inline-block; margin-bottom: .8rem;
             text-decoration: none;
         }
+        .footer-logo img { height: 76px; width: 76px; display: block; }
         .footer-brand p {
             color: var(--gray); font-size: .82rem;
             line-height: 1.9; max-width: 260px;
@@ -963,7 +969,7 @@
 <a href="#hero" class="skip-link">Aller au contenu principal</a>
 
 <nav id="navbar">
-    <a href="#hero" class="nav-logo">Glowin Space</a>
+    <a href="#hero" class="nav-logo"><img src="assets/logo.png" alt="Glowin Space" width="50" height="50"></a>
     <ul class="nav-links">
         <li><a href="#about">À propos</a></li>
         <li><a href="#services">Services</a></li>
@@ -1281,24 +1287,48 @@
                     <label for="rdv-service">Service souhaité</label>
                     <select id="rdv-service" required>
                         <option value="" disabled selected>Choisir un service</option>
-                        <optgroup label="Cils">
+                        <optgroup label="Cils (sur devis)">
                             <option>Extensions de cils — naturel</option>
                             <option>Extensions de cils — volume russe</option>
                             <option>Extensions de cils — mégavolume</option>
                         </optgroup>
-                        <optgroup label="Ongles">
-                            <option>Vernis semi-permanent</option>
-                            <option>Double pose</option>
-                            <option>Acrylique mains</option>
-                            <option>French</option>
-                            <option>Nail art personnalisé</option>
-                            <option>Pédicure</option>
-                            <option>Résine pieds</option>
+                        <optgroup label="Vernis Semi-Permanent">
+                            <option data-price="3500">Vernis gel S/M — 3 500 XOF</option>
+                            <option data-price="5000">Vernis gel L/XL/2XL/3XL — 5 000 XOF</option>
+                            <option data-price="8000">Double pose S/M — 8 000 XOF</option>
+                            <option data-price="10000">Double pose L/XL/2XL/3XL — 10 000 XOF</option>
+                            <option data-price="5000">French S à 3XL — 5 000 XOF</option>
                         </optgroup>
-                        <optgroup label="Soins">
+                        <optgroup label="Acrylique Mains">
+                            <option data-price="6000">Gainage (à partir de 6 000 XOF)</option>
+                            <option data-price="10000">Acrylique S/M — 10 000 XOF</option>
+                            <option data-price="12000">Acrylique L/XL — 12 000 XOF</option>
+                            <option data-price="15000">Acrylique XXL/3XL — 15 000 XOF</option>
+                            <option data-price="15000">French taille S/M — 15 000 XOF</option>
+                            <option data-price="18000">French taille L/XL — 18 000 XOF</option>
+                            <option data-price="12000">French reverse — 12 000 XOF</option>
+                            <option data-price="6000">Remplissage acrylique — 6 000 XOF</option>
+                        </optgroup>
+                        <optgroup label="Pédicure & Résine">
+                            <option data-price="15000">Mask Pédicure — 15 000 XOF</option>
+                            <option data-price="15000">Jelly Pédicure — 15 000 XOF</option>
+                            <option data-price="8000">Pédicure femme — 8 000 XOF</option>
+                            <option data-price="10000">Pédicure homme — 10 000 XOF</option>
+                            <option data-price="5000">Résine pieds — 5 000 XOF</option>
+                            <option data-price="8000">Résine pieds French — 8 000 XOF</option>
+                            <option data-price="3000">Remplissage résine — 3 000 XOF</option>
+                            <option data-price="2500">Nettoyage + Neutre H/F — 2 500 XOF</option>
+                        </optgroup>
+                        <optgroup label="Autres (sur devis)">
+                            <option>Nail art personnalisé</option>
                             <option>Conseil produits de soin</option>
                         </optgroup>
                     </select>
+                </div>
+                <div class="rdv-deposit" id="rdvDeposit" hidden>
+                    <p class="rdv-deposit-text" id="rdvDepositText"></p>
+                    <button type="button" class="btn-cils-outline" id="rdvPayBtn">Payer l'acompte maintenant</button>
+                    <p class="rdv-deposit-status" id="rdvDepositStatus" role="status" aria-live="polite"></p>
                 </div>
                 <div>
                     <label for="rdv-date">Date & heure souhaitées</label>
@@ -1404,7 +1434,7 @@
 <!-- CONTACT -->
 <section id="contact">
     <div class="container">
-        <span class="contact-logo" data-aos="fade-up">Glowin Space</span>
+        <img src="assets/logo.png" alt="Glowin Space" class="contact-logo" data-aos="fade-up" loading="lazy">
         <p class="contact-tagline" data-aos="fade-up">Éclat naturel, brillez en toute confiance</p>
         <p class="contact-text" data-aos="fade-up">
             Prête à rayonner ? Contactez-nous sur WhatsApp ou retrouvez-nous
@@ -1489,7 +1519,7 @@
 
         <!-- Marque -->
         <div class="footer-brand">
-            <a href="#hero" class="footer-logo">Glowin Space</a>
+            <a href="#hero" class="footer-logo"><img src="assets/logo.png" alt="Glowin Space" width="76" height="76" loading="lazy"></a>
             <p>Votre espace beauté de confiance à Cotonou. Extensions de cils, pose d'ongles et soins haut de gamme pour sublimer votre beauté naturelle.</p>
             <div class="footer-socials">
                 <a href="https://www.instagram.com/glowin.space" target="_blank" rel="noopener" class="footer-social-btn" title="Instagram">
@@ -1634,6 +1664,7 @@
 </a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.kkiapay.me/k.js"></script>
 <script>
     if (typeof AOS !== 'undefined') AOS.init({ duration:850, once:true, offset:70 });
 
@@ -1741,6 +1772,90 @@
     const now = new Date();
     rdvDateInput.min = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
+    // Acompte de réservation Kkiapay (20% du prix, vérifié côté serveur)
+    // À COMPLÉTER : une fois le compte Kkiapay activé, renseigne la clé
+    // publique ci-dessous (Dashboard Kkiapay → Clés API) et passe sandbox à
+    // false en production. La clé privée ne doit JAMAIS être mise ici :
+    // elle va uniquement dans les variables d'environnement Netlify, lue
+    // par netlify/functions/verify-payment.js.
+    const KKIAPAY_CONFIG = { publicKey: null, sandbox: true };
+
+    const serviceSelect    = document.getElementById('rdv-service');
+    const rdvDeposit       = document.getElementById('rdvDeposit');
+    const rdvDepositText   = document.getElementById('rdvDepositText');
+    const rdvDepositStatus = document.getElementById('rdvDepositStatus');
+    const rdvPayBtn        = document.getElementById('rdvPayBtn');
+    let currentDepositAmount = null;
+    let depositPaid          = false;
+    let depositTransactionId = null;
+
+    function formatXOF(n) { return n.toLocaleString('fr-FR') + ' XOF'; }
+
+    serviceSelect.addEventListener('change', function() {
+        const option = serviceSelect.selectedOptions[0];
+        const price = option ? Number(option.dataset.price) : NaN;
+        depositPaid = false;
+        depositTransactionId = null;
+        rdvDepositStatus.textContent = '';
+
+        if (!price) {
+            rdvDeposit.hidden = true;
+            currentDepositAmount = null;
+            return;
+        }
+
+        currentDepositAmount = Math.round(price * 0.2);
+        rdvDepositText.innerHTML = `Acompte pour sécuriser ce rendez-vous : <strong>${formatXOF(currentDepositAmount)}</strong> (20% du prix, le reste se règle sur place).`;
+        rdvDeposit.hidden = false;
+    });
+
+    rdvPayBtn.addEventListener('click', function() {
+        if (!currentDepositAmount) return;
+
+        if (!KKIAPAY_CONFIG.publicKey) {
+            rdvDepositStatus.textContent = "Paiement en ligne bientôt disponible — vous pouvez réserver sans acompte pour l'instant.";
+            return;
+        }
+
+        openKkiapayWidget({
+            amount: currentDepositAmount,
+            key: KKIAPAY_CONFIG.publicKey,
+            sandbox: KKIAPAY_CONFIG.sandbox,
+            position: 'center',
+            data: JSON.stringify({ service: serviceSelect.value }),
+        });
+    });
+
+    if (typeof addSuccessListener === 'function') {
+        addSuccessListener(function(response) {
+            rdvDepositStatus.textContent = 'Vérification du paiement en cours...';
+            fetch('/.netlify/functions/verify-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ transactionId: response.transactionId }),
+            })
+                .then(r => r.json())
+                .then(result => {
+                    if (result.verified) {
+                        depositPaid = true;
+                        depositTransactionId = response.transactionId;
+                        rdvDepositStatus.textContent = '✓ Acompte payé et vérifié. Vous pouvez envoyer votre demande.';
+                    } else {
+                        rdvDepositStatus.textContent = 'Paiement non confirmé — merci de réessayer ou de nous contacter sur WhatsApp.';
+                    }
+                })
+                .catch(() => {
+                    rdvDepositStatus.textContent = 'Impossible de vérifier le paiement pour le moment — contactez-nous sur WhatsApp avec votre référence de transaction.';
+                });
+        });
+    }
+
+    if (typeof addFailedListener === 'function') {
+        addFailedListener(function() {
+            rdvDepositStatus.textContent = 'Le paiement a échoué ou a été annulé.';
+        });
+    }
+
     // Newsletter Brevo
     // À COMPLÉTER : une fois le compte Brevo validé, récupère le code
     // d'intégration du formulaire (Marketing → Formulaires → ton formulaire
@@ -1789,6 +1904,7 @@
 
         let text = `Bonjour Glowin Space ! 🌟\n\nJe souhaite prendre rendez-vous :\n\n👤 Nom : ${nom}\n💅 Service : ${service}`;
         if (dateStr) text += `\n📅 Date souhaitée : ${dateStr}`;
+        if (depositPaid) text += `\n💳 Acompte payé : ${formatXOF(currentDepositAmount)} (réf: ${depositTransactionId})`;
         if (msg)     text += `\n💬 Message : ${msg}`;
         text += `\n\nMerci !`;
 
