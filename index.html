@@ -129,6 +129,12 @@
         }
         .skip-link:focus { top: 0; }
 
+        .sr-only {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+        }
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.001ms !important;
@@ -682,6 +688,31 @@
         }
         .contact-info-item span { color:var(--cream); font-size:.85rem; }
 
+        /* ===== NEWSLETTER ===== */
+        #newsletter { background:var(--dark); text-align:center; }
+        #newsletter .container { max-width:640px; }
+        .newsletter-text { color:var(--gray); font-size:.9rem; line-height:1.9; margin-bottom:2.5rem; }
+        .newsletter-form {
+            display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center;
+        }
+        .newsletter-form input[type="email"] {
+            flex:1; min-width:220px; background:rgba(255,255,255,.04);
+            border:1px solid rgba(201,168,76,.25); color:var(--cream);
+            padding:1rem 1.2rem; font-family:'Lato',sans-serif;
+            font-size:.88rem; font-weight:300; outline:none;
+            transition:border-color .3s, box-shadow .3s;
+        }
+        .newsletter-form input[type="email"]:focus {
+            border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,168,76,.25);
+        }
+        .newsletter-status {
+            margin-top:1.2rem; font-size:.8rem; color:var(--gold); min-height:1.2em;
+        }
+        @media(max-width:600px){
+            .newsletter-form { flex-direction:column; }
+            .newsletter-form button { width:100%; }
+        }
+
         /* ===== FOOTER ===== */
         .footer-main {
             background: var(--dark);
@@ -958,6 +989,7 @@
     <a href="#produits"    onclick="closeMenu()">Produits</a>
     <a href="#galerie"     onclick="closeMenu()">Galerie</a>
     <a href="#faq"         onclick="closeMenu()">FAQ</a>
+    <a href="#newsletter"  onclick="closeMenu()">Newsletter</a>
     <a href="#contact"     onclick="closeMenu()">Contact</a>
     <a href="#reservation" onclick="closeMenu()" style="color:var(--gold);font-size:1rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Lato',sans-serif;">Réserver →</a>
 </div>
@@ -1432,6 +1464,25 @@
     </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section id="newsletter">
+    <div class="container">
+        <span class="section-label" data-aos="fade-up">✦ Restez informée</span>
+        <h2 class="section-title" data-aos="fade-up">Rejoignez la Glowin List</h2>
+        <div class="gold-line center" data-aos="fade-up"></div>
+        <p class="newsletter-text" data-aos="fade-up">
+            Offres exclusives, nouveautés produits et conseils beauté —
+            directement dans votre boîte mail. Pas de spam, promis.
+        </p>
+        <form class="newsletter-form" id="newsletterForm" data-aos="fade-up">
+            <label for="newsletter-email" class="sr-only">Votre adresse email</label>
+            <input type="email" id="newsletter-email" placeholder="Votre adresse email" required autocomplete="email">
+            <button type="submit" class="btn-primary">S'inscrire</button>
+        </form>
+        <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite"></p>
+    </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer-main">
     <div class="footer-grid">
@@ -1464,6 +1515,7 @@
                 <li><a href="#produits">Produits</a></li>
                 <li><a href="#galerie">Galerie</a></li>
                 <li><a href="#faq">FAQ</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
                 <li><a href="#reservation">Réserver</a></li>
             </ul>
         </div>
@@ -1688,6 +1740,27 @@
     const pad = n => String(n).padStart(2, '0');
     const now = new Date();
     rdvDateInput.min = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+    // Newsletter Brevo
+    // À COMPLÉTER : une fois le compte Brevo validé, récupère le code
+    // d'intégration du formulaire (Marketing → Formulaires → ton formulaire
+    // → onglet Partager/Intégrer) et renseigne actionUrl avec l'URL
+    // "action" de ce formulaire (ex: 'https://xxxx.sibforms.com/serve/MUIxxxx').
+    // Les champs cachés éventuels (locale, liste, honeypot…) devront être
+    // recopiés ici aussi — dis-le-moi et je les intègre.
+    const NEWSLETTER_CONFIG = { actionUrl: null };
+
+    const newsletterForm   = document.getElementById('newsletterForm');
+    const newsletterStatus = document.getElementById('newsletterStatus');
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!NEWSLETTER_CONFIG.actionUrl) {
+            newsletterStatus.textContent = 'Inscription bientôt disponible — revenez très vite !';
+            return;
+        }
+        newsletterForm.action = NEWSLETTER_CONFIG.actionUrl;
+        newsletterForm.submit();
+    });
 
     // Formulaire → WhatsApp
     document.getElementById('rdvForm').addEventListener('submit', function(e) {
