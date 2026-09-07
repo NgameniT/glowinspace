@@ -1,0 +1,8 @@
+{
+  "name": "glowinspace",
+  "private": true,
+  "description": "Site vitrine Glowin Space",
+  "dependencies": {
+    "@kkiapay-org/nodejs-sdk": "^1.0.7"
+  }
+}
