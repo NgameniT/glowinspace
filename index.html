@@ -55,6 +55,45 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Combien de temps dure une pose d'extensions de cils ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Comptez entre 3 et 4 semaines avant un remplissage, selon votre cycle naturel de pousse des cils et l'entretien apporté au quotidien." }
+            },
+            {
+                "@type": "Question",
+                "name": "Faut-il prendre rendez-vous à l'avance ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Oui, toutes nos prestations (cils, ongles, pédicure) sont réalisées uniquement sur rendez-vous, à confirmer via WhatsApp ou le formulaire de réservation." }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment annuler ou modifier mon rendez-vous ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Contactez-nous directement sur WhatsApp au minimum 24 heures à l'avance. Toute annulation tardive ou absence non signalée peut entraîner des frais." }
+            },
+            {
+                "@type": "Question",
+                "name": "Les tarifs affichés sont-ils garantis ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Les tarifs sont indiqués en Francs CFA (XOF) et peuvent évoluer. Le tarif appliqué est celui en vigueur au moment de votre réservation, confirmé avec vous via WhatsApp." }
+            },
+            {
+                "@type": "Question",
+                "name": "Livrez-vous les produits de soin ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Oui, la livraison est disponible à Cotonou. Passez votre commande directement via WhatsApp depuis la section Produits." }
+            },
+            {
+                "@type": "Question",
+                "name": "Quels moyens de paiement acceptez-vous ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Le paiement s'effectue directement au studio à l'issue de la prestation. Pour toute précision sur les moyens de paiement disponibles, contactez-nous via WhatsApp." }
+            }
+        ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://unpkg.com">
@@ -451,6 +490,24 @@
         .tarif-row:last-child { border-bottom:none; }
         .tarif-name { font-size:.82rem; color:var(--gray); }
         .tarif-price { font-size:.82rem; color:var(--cream); font-weight:700; white-space:nowrap; margin-left:1rem; }
+
+        /* ===== FAQ ===== */
+        #faq { background:var(--black); }
+        .faq-list { max-width:800px; margin:3rem auto 0; }
+        .faq-item { border-bottom:1px solid rgba(201,168,76,.15); }
+        .faq-item summary {
+            cursor:pointer; padding:1.5rem 0;
+            font-family:'Playfair Display',serif; font-size:1.05rem;
+            color:var(--cream); list-style:none;
+            display:flex; justify-content:space-between; align-items:center; gap:1.5rem;
+        }
+        .faq-item summary::-webkit-details-marker { display:none; }
+        .faq-item summary::after {
+            content:'+'; color:var(--gold); font-size:1.5rem; font-weight:300;
+            transition:transform .3s; flex-shrink:0; line-height:1;
+        }
+        .faq-item[open] summary::after { transform:rotate(45deg); }
+        .faq-item p { color:var(--gray); font-size:.88rem; line-height:1.9; padding:0 2rem 1.6rem 0; }
 
         /* ===== RÉSERVATION ===== */
         #reservation {
@@ -883,6 +940,7 @@
         <li><a href="#tarifs">Tarifs</a></li>
         <li><a href="#produits">Produits</a></li>
         <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#reservation" class="nav-cta">Réserver</a>
@@ -899,6 +957,7 @@
     <a href="#tarifs"      onclick="closeMenu()">Tarifs</a>
     <a href="#produits"    onclick="closeMenu()">Produits</a>
     <a href="#galerie"     onclick="closeMenu()">Galerie</a>
+    <a href="#faq"         onclick="closeMenu()">FAQ</a>
     <a href="#contact"     onclick="closeMenu()">Contact</a>
     <a href="#reservation" onclick="closeMenu()" style="color:var(--gold);font-size:1rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Lato',sans-serif;">Réserver →</a>
 </div>
@@ -1122,6 +1181,43 @@
                 <div class="tarif-row"><span class="tarif-name">Nettoyage + Neutre H/F</span><span class="tarif-price">2 500 XOF</span></div>
             </div>
 
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-label">✦ Vos questions</span>
+            <h2 class="section-title">Questions Fréquentes</h2>
+            <div class="gold-line center"></div>
+        </div>
+        <div class="faq-list" data-aos="fade-up">
+            <details class="faq-item">
+                <summary>Combien de temps dure une pose d'extensions de cils ?</summary>
+                <p>Comptez entre 3 et 4 semaines avant un remplissage, selon votre cycle naturel de pousse des cils et l'entretien apporté au quotidien.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Faut-il prendre rendez-vous à l'avance ?</summary>
+                <p>Oui, toutes nos prestations (cils, ongles, pédicure) sont réalisées uniquement sur rendez-vous, à confirmer via WhatsApp ou le formulaire de réservation.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Comment annuler ou modifier mon rendez-vous ?</summary>
+                <p>Contactez-nous directement sur WhatsApp au minimum 24 heures à l'avance. Toute annulation tardive ou absence non signalée peut entraîner des frais.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Les tarifs affichés sont-ils garantis ?</summary>
+                <p>Les tarifs sont indiqués en Francs CFA (XOF) et peuvent évoluer. Le tarif appliqué est celui en vigueur au moment de votre réservation, confirmé avec vous via WhatsApp.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Livrez-vous les produits de soin ?</summary>
+                <p>Oui, la livraison est disponible à Cotonou. Passez votre commande directement via WhatsApp depuis la section Produits.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Quels moyens de paiement acceptez-vous ?</summary>
+                <p>Le paiement s'effectue directement au studio à l'issue de la prestation. Pour toute précision sur les moyens de paiement disponibles, contactez-nous via WhatsApp.</p>
+            </details>
         </div>
     </div>
 </section>
@@ -1367,6 +1463,7 @@
                 <li><a href="#tarifs">Tarifs</a></li>
                 <li><a href="#produits">Produits</a></li>
                 <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#reservation">Réserver</a></li>
             </ul>
         </div>
