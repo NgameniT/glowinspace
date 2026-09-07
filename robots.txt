@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://glowinspace.netlify.app/sitemap.xml
