@@ -876,7 +876,6 @@
             font-weight:700; cursor:pointer; margin-top:1.2rem; transition:background .3s;
         }
         .btn-pay-produit:hover { background:var(--gold-lt); }
-        .btn-pay-reveal { margin-top:1.5rem; }
         .produit-order-status {
             font-size:.78rem; color:var(--gold); margin-top:.8rem; min-height:1.1em;
         }
@@ -1441,7 +1440,7 @@
         <div class="produits-grid">
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="0">
-                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-1')" aria-label="Voir les détails — Black Saop">
+                <button type="button" class="produit-img-btn" onclick="openProductPay('produit-1')" aria-label="Voir les détails — Black Saop">
                     <img src="assets/produit-1.jpg" alt="Black Saop" width="900" height="1126" loading="lazy">
                 </button>
                 <div class="produit-info">
@@ -1453,7 +1452,7 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="80">
-                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-2')" aria-label="Voir les détails — Huile Hydratante">
+                <button type="button" class="produit-img-btn" onclick="openProductPay('produit-2')" aria-label="Voir les détails — Huile Hydratante">
                     <img src="assets/produit-2.jpg" alt="Huile Hydratante" width="900" height="1126" loading="lazy">
                 </button>
                 <div class="produit-info">
@@ -1465,7 +1464,7 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="160">
-                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-3')" aria-label="Voir les détails — Crème Visage">
+                <button type="button" class="produit-img-btn" onclick="openProductPay('produit-3')" aria-label="Voir les détails — Crème Visage">
                     <img src="assets/produit-3.jpg" alt="Crème Visage" width="900" height="1260" loading="lazy">
                 </button>
                 <div class="produit-info">
@@ -1477,7 +1476,7 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="240">
-                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-4')" aria-label="Voir les détails — Gommage Black Saop">
+                <button type="button" class="produit-img-btn" onclick="openProductPay('produit-4')" aria-label="Voir les détails — Gommage Black Saop">
                     <img src="assets/produit-4.jpg" alt="Gommage Black Saop" width="900" height="1126" loading="lazy">
                 </button>
                 <div class="produit-info">
@@ -1489,7 +1488,7 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="320">
-                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-5')" aria-label="Voir les détails — Lotion Tonique">
+                <button type="button" class="produit-img-btn" onclick="openProductPay('produit-5')" aria-label="Voir les détails — Lotion Tonique">
                     <img src="assets/produit-detail-5.jpg" alt="Lotion Tonique" width="900" height="1126" loading="lazy">
                 </button>
                 <div class="produit-info">
@@ -1501,7 +1500,7 @@
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="400">
-                <button type="button" class="produit-img-btn" onclick="openModal('modal-produit-6')" aria-label="Voir les détails — Savon Riz au Lait & Collagène Gluta">
+                <button type="button" class="produit-img-btn" onclick="openProductPay('produit-6')" aria-label="Voir les détails — Savon Riz au Lait & Collagène Gluta">
                     <img src="assets/produit-detail-6.jpg" alt="Savon Riz au Lait & Collagène Gluta" width="900" height="1126" loading="lazy">
                 </button>
                 <div class="produit-info">
@@ -1768,8 +1767,7 @@
         <p class="modal-produit-price">10 000 – 15 000 XOF (selon carnation)</p>
         <p>Hydrate la peau en profondeur, prévient les rides, répare et régénère. Nourrit la peau en vitamines A et E.</p>
         <p>Savon adapté à tous types de peau — ne dépigmente pas.</p>
-        <button type="button" class="btn-pay-produit btn-pay-reveal" onclick="revealOrderForm('produit-1')">Payer</button>
-        <div class="produit-order" id="order-produit-1" hidden>
+        <div class="produit-order" id="order-produit-1">
             <p class="produit-order-title">Payez en ligne</p>
             <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
             <label for="pay-carnation-produit-1">Carnation</label>
@@ -1797,8 +1795,7 @@
         <p class="modal-produit-price">3 000 XOF</p>
         <p>Hydrate le corps, répare et donne un éclat naturel. Adaptée à tout type de peau et de teint, elle pénètre la peau en profondeur.</p>
         <p>Huile essentielle 100% naturelle. <em style="color:var(--gold);font-style:normal;">NB : ne colle pas la main.</em></p>
-        <button type="button" class="btn-pay-produit btn-pay-reveal" onclick="revealOrderForm('produit-2')">Payer</button>
-        <div class="produit-order" id="order-produit-2" hidden>
+        <div class="produit-order" id="order-produit-2">
             <p class="produit-order-title">Payez en ligne</p>
             <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
             <label for="pay-name-produit-2">Nom & prénoms</label>
@@ -1820,8 +1817,7 @@
         <h2>Crème Visage</h2>
         <p class="modal-produit-price">5 000 XOF</p>
         <p>Unifie le teint et prépare la peau. Une crème de visage pensée pour un usage quotidien.</p>
-        <button type="button" class="btn-pay-produit btn-pay-reveal" onclick="revealOrderForm('produit-3')">Payer</button>
-        <div class="produit-order" id="order-produit-3" hidden>
+        <div class="produit-order" id="order-produit-3">
             <p class="produit-order-title">Payez en ligne</p>
             <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
             <label for="pay-name-produit-3">Nom & prénoms</label>
@@ -1843,8 +1839,7 @@
         <h2>Gommage Black Saop</h2>
         <p class="modal-produit-price">7 000 XOF</p>
         <p>Exfolie et sublime la peau — convient à tous types de peau.</p>
-        <button type="button" class="btn-pay-produit btn-pay-reveal" onclick="revealOrderForm('produit-4')">Payer</button>
-        <div class="produit-order" id="order-produit-4" hidden>
+        <div class="produit-order" id="order-produit-4">
             <p class="produit-order-title">Payez en ligne</p>
             <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
             <label for="pay-name-produit-4">Nom & prénoms</label>
@@ -1867,8 +1862,7 @@
         <p class="modal-produit-price">2 500 XOF</p>
         <p>Soin de visage purifiant, au zinc et extrait de thé vert — tonifie et clarifie la peau.</p>
         <p>Sans alcool. Recommandée pour les peaux mixtes à grasses.</p>
-        <button type="button" class="btn-pay-produit btn-pay-reveal" onclick="revealOrderForm('produit-5')">Payer</button>
-        <div class="produit-order" id="order-produit-5" hidden>
+        <div class="produit-order" id="order-produit-5">
             <p class="produit-order-title">Payez en ligne</p>
             <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
             <label for="pay-name-produit-5">Nom & prénoms</label>
@@ -1891,8 +1885,7 @@
         <p class="modal-produit-price">2 000 XOF</p>
         <p>Élimine les boutons et les taches de pigmentation. Enrichit la peau en vitamine B.</p>
         <p>Savon adapté à tous types de peaux, aux extraits de plantes.</p>
-        <button type="button" class="btn-pay-produit btn-pay-reveal" onclick="revealOrderForm('produit-6')">Payer</button>
-        <div class="produit-order" id="order-produit-6" hidden>
+        <div class="produit-order" id="order-produit-6">
             <p class="produit-order-title">Payez en ligne</p>
             <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
             <label for="pay-name-produit-6">Nom & prénoms</label>
