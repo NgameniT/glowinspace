@@ -604,10 +604,9 @@
         .galerie-grid {
             display:grid;
             grid-template-columns:repeat(4,1fr);
-            grid-auto-rows:260px;
+            grid-template-rows:260px 260px;
             gap:3px; margin-top:4rem;
         }
-        .galerie-item.wide { grid-column:1 / -1; }
         .galerie-item { overflow:hidden; position:relative; }
         .galerie-item:first-child { grid-column:span 2; grid-row:span 2; }
         .galerie-item img {
@@ -623,7 +622,13 @@
         .galerie-item:hover .galerie-veil { background:rgba(201,168,76,.12); }
 
         /* ===== CONTACT ===== */
-        #contact { background:var(--dark); text-align:center; }
+        #contact {
+            background: url('assets/devanture.jpg') center 20%/cover no-repeat;
+            background-attachment: fixed;
+            text-align:center; position:relative;
+        }
+        #contact::before { content:''; position:absolute; inset:0; background:rgba(8,8,8,.86); }
+        #contact>.container { position:relative; }
         .contact-logo {
             display:block; margin:0 auto .5rem;
             width:clamp(120px,18vw,170px); height:clamp(120px,18vw,170px);
@@ -844,6 +849,40 @@
             font-size:.72rem; letter-spacing:.15em; text-transform:uppercase;
             text-decoration:none; font-weight:700; margin-top:.5rem;
         }
+        .produit-order {
+            margin-top:1.8rem; padding-top:1.5rem;
+            border-top:1px solid rgba(201,168,76,.2);
+        }
+        .produit-order-title {
+            font-family:'Playfair Display',serif; font-size:.95rem;
+            color:var(--cream); margin-bottom:.3rem;
+        }
+        .produit-order-hint { font-size:.75rem; color:var(--gray); margin-bottom:1rem; }
+        .produit-order label {
+            display:block; font-size:.58rem; letter-spacing:.2em;
+            text-transform:uppercase; color:var(--gold); margin:.8rem 0 .3rem;
+        }
+        .produit-order input, .produit-order select {
+            width:100%; background:rgba(255,255,255,.04);
+            border:1px solid rgba(201,168,76,.25); color:var(--cream);
+            padding:.75rem .9rem; font-family:'Lato',sans-serif;
+            font-size:.85rem; font-weight:300; outline:none;
+            transition:border-color .3s, box-shadow .3s;
+        }
+        .produit-order input:focus, .produit-order select:focus {
+            border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,168,76,.25);
+        }
+        .produit-order select option { background:var(--dark); }
+        .btn-pay-produit {
+            display:block; width:100%; background:var(--gold); color:var(--black);
+            border:none; padding:.9rem; font-family:'Lato',sans-serif;
+            font-size:.72rem; letter-spacing:.15em; text-transform:uppercase;
+            font-weight:700; cursor:pointer; margin-top:1.2rem; transition:background .3s;
+        }
+        .btn-pay-produit:hover { background:var(--gold-lt); }
+        .produit-order-status {
+            font-size:.78rem; color:var(--gold); margin-top:.8rem; min-height:1.1em;
+        }
 
         @media(max-width:900px){
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -905,6 +944,7 @@
             #hero { background-attachment: scroll; }
             #services { background-attachment: scroll; }
             #reservation { background-attachment: scroll; }
+            #contact { background-attachment: scroll; }
 
             /* About */
             .about-grid { grid-template-columns:1fr; gap:2rem; }
@@ -926,9 +966,8 @@
             .produit-card img { height:280px; }
 
             /* Galerie */
-            .galerie-grid { grid-template-columns:1fr 1fr; grid-template-rows:200px 200px 200px; grid-auto-rows:200px; }
+            .galerie-grid { grid-template-columns:1fr 1fr; grid-template-rows:200px 200px 200px; }
             .galerie-item:first-child { grid-column:span 2; grid-row:span 1; }
-            .galerie-item.wide { grid-column:1 / -1; }
 
             /* Contact */
             .contact-info { gap:2rem; flex-wrap:wrap; justify-content:center; }
@@ -957,7 +996,6 @@
             .galerie-grid {
                 grid-template-columns:1fr 1fr;
                 grid-template-rows:160px 160px 160px;
-                grid-auto-rows:160px;
             }
 
             /* Tarif rows */
@@ -1519,9 +1557,7 @@
         <div class="galerie-item"><img src="assets/galerie-2.jpg" alt="Nail art french dots" width="1400" height="2488" loading="lazy"><div class="galerie-veil"></div></div>
         <div class="galerie-item"><img src="assets/galerie-3.jpg" alt="Nail art animal print" width="1400" height="1866" loading="lazy"><div class="galerie-veil"></div></div>
         <div class="galerie-item"><img src="assets/galerie-4.jpg" alt="Ongles bordeaux" width="1400" height="2488" loading="lazy"><div class="galerie-veil"></div></div>
-        <div class="galerie-item"><img src="assets/cils-3.jpg" alt="Résultat cils Glowin Space" style="object-position:center 30%;" width="607" height="1080" loading="lazy"><div class="galerie-veil"></div></div>
-        <div class="galerie-item wide"><img src="assets/galerie-6.jpg" alt="Devanture Glowin Space, Cotonou" style="object-position:center 12%;" width="1400" height="2488" loading="lazy"><div class="galerie-veil"></div></div>
-    </div>
+        <div class="galerie-item"><img src="assets/cils-3.jpg" alt="Résultat cils Glowin Space" style="object-position:center 30%;" width="607" height="1080" loading="lazy"><div class="galerie-veil"></div></div>    </div>
 </section>
 
 <!-- CONTACT -->
@@ -1764,6 +1800,24 @@
             <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Commander via WhatsApp
         </a>
+
+        <div class="produit-order">
+            <p class="produit-order-title">Ou payez en ligne maintenant</p>
+            <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
+            <label for="pay-carnation-produit-1">Carnation</label>
+            <select id="pay-carnation-produit-1">
+                <option value="10000">Claire — 10 000 XOF</option>
+                <option value="15000">Foncée — 15 000 XOF</option>
+            </select>
+            <label for="pay-name-produit-1">Nom & prénoms</label>
+            <input type="text" id="pay-name-produit-1" placeholder="Ex : Adjovi Marie">
+            <label for="pay-phone-produit-1">Téléphone</label>
+            <input type="tel" id="pay-phone-produit-1" placeholder="Ex : 90 00 00 00">
+            <label for="pay-address-produit-1">Adresse de livraison</label>
+            <input type="text" id="pay-address-produit-1" placeholder="Quartier, repère...">
+            <button type="button" class="btn-pay-produit" onclick="payBlackSaop()">Payer maintenant</button>
+            <p class="produit-order-status" id="pay-status-produit-1" role="status" aria-live="polite"></p>
+        </div>
     </div>
 </div>
 
@@ -1780,6 +1834,19 @@
             <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Commander via WhatsApp
         </a>
+
+        <div class="produit-order">
+            <p class="produit-order-title">Ou payez en ligne maintenant</p>
+            <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
+            <label for="pay-name-produit-2">Nom & prénoms</label>
+            <input type="text" id="pay-name-produit-2" placeholder="Ex : Adjovi Marie">
+            <label for="pay-phone-produit-2">Téléphone</label>
+            <input type="tel" id="pay-phone-produit-2" placeholder="Ex : 90 00 00 00">
+            <label for="pay-address-produit-2">Adresse de livraison</label>
+            <input type="text" id="pay-address-produit-2" placeholder="Quartier, repère...">
+            <button type="button" class="btn-pay-produit" onclick="payProduct('produit-2', 'Huile Hydratante', 3000)">Payer 3 000 XOF maintenant</button>
+            <p class="produit-order-status" id="pay-status-produit-2" role="status" aria-live="polite"></p>
+        </div>
     </div>
 </div>
 
@@ -1795,6 +1862,19 @@
             <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Commander via WhatsApp
         </a>
+
+        <div class="produit-order">
+            <p class="produit-order-title">Ou payez en ligne maintenant</p>
+            <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
+            <label for="pay-name-produit-3">Nom & prénoms</label>
+            <input type="text" id="pay-name-produit-3" placeholder="Ex : Adjovi Marie">
+            <label for="pay-phone-produit-3">Téléphone</label>
+            <input type="tel" id="pay-phone-produit-3" placeholder="Ex : 90 00 00 00">
+            <label for="pay-address-produit-3">Adresse de livraison</label>
+            <input type="text" id="pay-address-produit-3" placeholder="Quartier, repère...">
+            <button type="button" class="btn-pay-produit" onclick="payProduct('produit-3', 'Crème Visage', 5000)">Payer 5 000 XOF maintenant</button>
+            <p class="produit-order-status" id="pay-status-produit-3" role="status" aria-live="polite"></p>
+        </div>
     </div>
 </div>
 
@@ -1810,6 +1890,19 @@
             <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Commander via WhatsApp
         </a>
+
+        <div class="produit-order">
+            <p class="produit-order-title">Ou payez en ligne maintenant</p>
+            <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
+            <label for="pay-name-produit-4">Nom & prénoms</label>
+            <input type="text" id="pay-name-produit-4" placeholder="Ex : Adjovi Marie">
+            <label for="pay-phone-produit-4">Téléphone</label>
+            <input type="tel" id="pay-phone-produit-4" placeholder="Ex : 90 00 00 00">
+            <label for="pay-address-produit-4">Adresse de livraison</label>
+            <input type="text" id="pay-address-produit-4" placeholder="Quartier, repère...">
+            <button type="button" class="btn-pay-produit" onclick="payProduct('produit-4', 'Gommage Black Saop', 7000)">Payer 7 000 XOF maintenant</button>
+            <p class="produit-order-status" id="pay-status-produit-4" role="status" aria-live="polite"></p>
+        </div>
     </div>
 </div>
 
@@ -1826,6 +1919,19 @@
             <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Commander via WhatsApp
         </a>
+
+        <div class="produit-order">
+            <p class="produit-order-title">Ou payez en ligne maintenant</p>
+            <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
+            <label for="pay-name-produit-5">Nom & prénoms</label>
+            <input type="text" id="pay-name-produit-5" placeholder="Ex : Adjovi Marie">
+            <label for="pay-phone-produit-5">Téléphone</label>
+            <input type="tel" id="pay-phone-produit-5" placeholder="Ex : 90 00 00 00">
+            <label for="pay-address-produit-5">Adresse de livraison</label>
+            <input type="text" id="pay-address-produit-5" placeholder="Quartier, repère...">
+            <button type="button" class="btn-pay-produit" onclick="payProduct('produit-5', 'Lotion Tonique', 2500)">Payer 2 500 XOF maintenant</button>
+            <p class="produit-order-status" id="pay-status-produit-5" role="status" aria-live="polite"></p>
+        </div>
     </div>
 </div>
 
@@ -1842,6 +1948,19 @@
             <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Commander via WhatsApp
         </a>
+
+        <div class="produit-order">
+            <p class="produit-order-title">Ou payez en ligne maintenant</p>
+            <p class="produit-order-hint">Livraison disponible à Cotonou.</p>
+            <label for="pay-name-produit-6">Nom & prénoms</label>
+            <input type="text" id="pay-name-produit-6" placeholder="Ex : Adjovi Marie">
+            <label for="pay-phone-produit-6">Téléphone</label>
+            <input type="tel" id="pay-phone-produit-6" placeholder="Ex : 90 00 00 00">
+            <label for="pay-address-produit-6">Adresse de livraison</label>
+            <input type="text" id="pay-address-produit-6" placeholder="Quartier, repère...">
+            <button type="button" class="btn-pay-produit" onclick="payProduct('produit-6', 'Savon Riz au Lait & Collagène', 2000)">Payer 2 000 XOF maintenant</button>
+            <p class="produit-order-status" id="pay-status-produit-6" role="status" aria-live="polite"></p>
+        </div>
     </div>
 </div>
 
@@ -2019,8 +2138,81 @@
         });
     });
 
+    // Paiement des produits (même widget Kkiapay, un seul écouteur partagé
+    // pour tout le site — currentProductOrder indique s'il s'agit d'une
+    // commande produit plutôt que de l'acompte de réservation ci-dessus)
+    let currentProductOrder = null;
+
+    function payProduct(productId, productName, amount) {
+        const nameEl    = document.getElementById(`pay-name-${productId}`);
+        const phoneEl   = document.getElementById(`pay-phone-${productId}`);
+        const addressEl = document.getElementById(`pay-address-${productId}`);
+        const statusEl  = document.getElementById(`pay-status-${productId}`);
+
+        const name    = nameEl.value.trim();
+        const phone   = phoneEl.value.trim();
+        const address = addressEl.value.trim();
+
+        if (!name || !phone || !address) {
+            statusEl.textContent = 'Merci de renseigner votre nom, téléphone et adresse de livraison avant de payer.';
+            return;
+        }
+
+        if (!KKIAPAY_CONFIG.publicKey) {
+            statusEl.textContent = "Paiement en ligne bientôt disponible — commandez via WhatsApp en attendant.";
+            return;
+        }
+
+        if (typeof openKkiapayWidget !== 'function') {
+            statusEl.textContent = "Le module de paiement n'a pas pu se charger — réessayez ou commandez via WhatsApp.";
+            return;
+        }
+
+        statusEl.textContent = '';
+        currentProductOrder = { productId, productName, amount, name, phone, address, statusEl };
+
+        openKkiapayWidget({
+            amount: amount,
+            key: KKIAPAY_CONFIG.publicKey,
+            sandbox: KKIAPAY_CONFIG.sandbox,
+            position: 'center',
+            data: JSON.stringify({ product: productName }),
+        });
+    }
+
+    function payBlackSaop() {
+        const price = Number(document.getElementById('pay-carnation-produit-1').value);
+        payProduct('produit-1', 'Black Saop', price);
+    }
+
     if (typeof addSuccessListener === 'function') {
         addSuccessListener(function(response) {
+            if (currentProductOrder) {
+                const order = currentProductOrder;
+                order.statusEl.textContent = 'Vérification du paiement en cours...';
+                fetch('/.netlify/functions/verify-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ transactionId: response.transactionId }),
+                })
+                    .then(r => r.json())
+                    .then(result => {
+                        if (result.verified) {
+                            order.statusEl.textContent = '✓ Paiement reçu ! Ouverture de WhatsApp pour confirmer la livraison...';
+                            let text = `Bonjour Glowin Space ! 🌟\n\nJe viens de payer en ligne :\n\n🛍️ Produit : ${order.productName}\n💳 Montant payé : ${formatXOF(order.amount)} (réf: ${response.transactionId})\n\n👤 Nom : ${order.name}\n📞 Téléphone : ${order.phone}\n📍 Adresse de livraison : ${order.address}\n\nMerci de confirmer la livraison !`;
+                            window.open(`https://wa.me/22998642593?text=${encodeURIComponent(text)}`, '_blank');
+                        } else {
+                            order.statusEl.textContent = 'Paiement non confirmé — merci de réessayer ou de nous contacter sur WhatsApp.';
+                        }
+                        currentProductOrder = null;
+                    })
+                    .catch(() => {
+                        order.statusEl.textContent = 'Impossible de vérifier le paiement pour le moment — contactez-nous sur WhatsApp avec votre référence de transaction.';
+                        currentProductOrder = null;
+                    });
+                return;
+            }
+
             rdvDepositStatus.textContent = 'Vérification du paiement en cours...';
             fetch('/.netlify/functions/verify-payment', {
                 method: 'POST',
@@ -2045,6 +2237,11 @@
 
     if (typeof addFailedListener === 'function') {
         addFailedListener(function() {
+            if (currentProductOrder) {
+                currentProductOrder.statusEl.textContent = 'Le paiement a échoué ou a été annulé.';
+                currentProductOrder = null;
+                return;
+            }
             rdvDepositStatus.textContent = 'Le paiement a échoué ou a été annulé.';
         });
     }
