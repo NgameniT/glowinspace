@@ -1448,7 +1448,7 @@
                     <p class="produit-name">Black Saop</p>
                     <p class="produit-desc">Savon noir — nettoie en profondeur & régénère</p>
                     <p class="produit-price">10 000 – 15 000 XOF <span style="color:var(--gray);font-weight:400;">(selon carnation)</span></p>
-                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-1')">Payer</button>
+                    <button type="button" class="btn-pay-card" onclick="openProductPay('produit-1')">Payer</button>
                 </div>
             </div>
 
@@ -1460,7 +1460,7 @@
                     <p class="produit-name">Huile Hydratante</p>
                     <p class="produit-desc">Nourrit & illumine la peau en profondeur</p>
                     <p class="produit-price">3 000 XOF</p>
-                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-2')">Payer</button>
+                    <button type="button" class="btn-pay-card" onclick="openProductPay('produit-2')">Payer</button>
                 </div>
             </div>
 
@@ -1472,7 +1472,7 @@
                     <p class="produit-name">Crème Visage</p>
                     <p class="produit-desc">Unifie le teint & prépare la peau</p>
                     <p class="produit-price">5 000 XOF</p>
-                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-3')">Payer</button>
+                    <button type="button" class="btn-pay-card" onclick="openProductPay('produit-3')">Payer</button>
                 </div>
             </div>
 
@@ -1484,7 +1484,7 @@
                     <p class="produit-name">Gommage Black Saop</p>
                     <p class="produit-desc">Exfolie & sublime — pour tous types de peau</p>
                     <p class="produit-price">7 000 XOF</p>
-                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-4')">Payer</button>
+                    <button type="button" class="btn-pay-card" onclick="openProductPay('produit-4')">Payer</button>
                 </div>
             </div>
 
@@ -1496,7 +1496,7 @@
                     <p class="produit-name">Lotion Tonique</p>
                     <p class="produit-desc">Purifiante au zinc & thé vert — tonifie et clarifie la peau</p>
                     <p class="produit-price">2 500 XOF</p>
-                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-5')">Payer</button>
+                    <button type="button" class="btn-pay-card" onclick="openProductPay('produit-5')">Payer</button>
                 </div>
             </div>
 
@@ -1508,7 +1508,7 @@
                     <p class="produit-name">Riz au Lait & Collagène</p>
                     <p class="produit-desc">Élimine boutons & taches — enrichi en vitamine B</p>
                     <p class="produit-price">2 000 XOF</p>
-                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-6')">Payer</button>
+                    <button type="button" class="btn-pay-card" onclick="openProductPay('produit-6')">Payer</button>
                 </div>
             </div>
 
@@ -2128,10 +2128,15 @@
         payProduct('produit-1', 'Black Saop', price);
     }
 
-    function revealOrderForm(productId) {
+    function revealOrderForm(productId, smooth = true) {
         const form = document.getElementById(`order-${productId}`);
         form.hidden = false;
-        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        form.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+    }
+
+    function openProductPay(productId) {
+        openModal(`modal-${productId}`);
+        revealOrderForm(productId, false);
     }
 
     if (typeof addSuccessListener === 'function') {
