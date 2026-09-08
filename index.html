@@ -589,6 +589,17 @@
         }
         .produit-desc { font-size:.72rem; color:var(--gray); margin-bottom:.7rem; }
         .produit-price { font-size:.8rem; color:var(--gold); font-weight:700; margin-bottom:.6rem; }
+        .btn-pay-card {
+            display:inline-block; background:var(--gold); color:var(--black);
+            border:none; padding:.5rem .9rem; font-family:'Lato',sans-serif;
+            font-size:.65rem; letter-spacing:.1em; text-transform:uppercase;
+            font-weight:700; cursor:pointer;
+            opacity:0; transform:translateY(8px);
+            transition:opacity .3s, transform .3s, background .3s;
+        }
+        .btn-pay-card:hover { background:var(--gold-lt); }
+        .produit-card:hover .btn-pay-card { opacity:1; transform:translateY(0); }
+        @media(hover:none) { .btn-pay-card { opacity:1; transform:translateY(0); } }
 
         /* ===== GALERIE ===== */
         #galerie { background:var(--black); padding-bottom:0; }
@@ -1436,7 +1447,9 @@
                 <div class="produit-info">
                     <p class="produit-name">Black Saop</p>
                     <p class="produit-desc">Savon noir — nettoie en profondeur & régénère</p>
-                    <p class="produit-price">10 000 – 15 000 XOF <span style="color:var(--gray);font-weight:400;">(selon carnation)</span></p>                </div>
+                    <p class="produit-price">10 000 – 15 000 XOF <span style="color:var(--gray);font-weight:400;">(selon carnation)</span></p>
+                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-1')">Payer</button>
+                </div>
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="80">
@@ -1446,7 +1459,9 @@
                 <div class="produit-info">
                     <p class="produit-name">Huile Hydratante</p>
                     <p class="produit-desc">Nourrit & illumine la peau en profondeur</p>
-                    <p class="produit-price">3 000 XOF</p>                </div>
+                    <p class="produit-price">3 000 XOF</p>
+                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-2')">Payer</button>
+                </div>
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="160">
@@ -1456,7 +1471,9 @@
                 <div class="produit-info">
                     <p class="produit-name">Crème Visage</p>
                     <p class="produit-desc">Unifie le teint & prépare la peau</p>
-                    <p class="produit-price">5 000 XOF</p>                </div>
+                    <p class="produit-price">5 000 XOF</p>
+                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-3')">Payer</button>
+                </div>
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="240">
@@ -1466,7 +1483,9 @@
                 <div class="produit-info">
                     <p class="produit-name">Gommage Black Saop</p>
                     <p class="produit-desc">Exfolie & sublime — pour tous types de peau</p>
-                    <p class="produit-price">7 000 XOF</p>                </div>
+                    <p class="produit-price">7 000 XOF</p>
+                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-4')">Payer</button>
+                </div>
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="320">
@@ -1476,7 +1495,9 @@
                 <div class="produit-info">
                     <p class="produit-name">Lotion Tonique</p>
                     <p class="produit-desc">Purifiante au zinc & thé vert — tonifie et clarifie la peau</p>
-                    <p class="produit-price">2 500 XOF</p>                </div>
+                    <p class="produit-price">2 500 XOF</p>
+                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-5')">Payer</button>
+                </div>
             </div>
 
             <div class="produit-card" data-aos="fade-up" data-aos-delay="400">
@@ -1486,7 +1507,9 @@
                 <div class="produit-info">
                     <p class="produit-name">Riz au Lait & Collagène</p>
                     <p class="produit-desc">Élimine boutons & taches — enrichi en vitamine B</p>
-                    <p class="produit-price">2 000 XOF</p>                </div>
+                    <p class="produit-price">2 000 XOF</p>
+                    <button type="button" class="btn-pay-card" onclick="openModal('modal-produit-6')">Payer</button>
+                </div>
             </div>
 
         </div>
